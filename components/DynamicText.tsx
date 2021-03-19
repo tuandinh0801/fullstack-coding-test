@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { Text } from "@chakra-ui/react"
 
 const DynamicText = forwardRef((_, ref) => {
