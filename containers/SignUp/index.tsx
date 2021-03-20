@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   Container,
   Box,
@@ -23,23 +23,32 @@ const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleChangeEmail = useCallback((e) => {
+  const handleChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
 
-  const handleChangePassword = useCallback((e) => {
+  const handleChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   }, []);
 
-  const handleChangeConfirmPassword = useCallback((e) => {
+  const handleChangeConfirmPassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setConfirmPassword(e.target.value);
   }, []);
+
+  const checkError = useMemo(() => {
+    if (password !== confirm) return "Confirm password does not match password";
+
+    return false;
+  }, [email, password, confirm]);
 
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
+
       setError(null);
+      if (checkError) return setError(checkError);
       setLoading(true);
+
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
       } catch (err) {
@@ -58,7 +67,7 @@ const SignUp = () => {
         </Box>
         <Box my={4} textAlign="left">
           <form onSubmit={handleSubmit}>
-            {error && <ErrorMessage message={error} align="center"/>}
+            {error && <ErrorMessage message={error} align="center" />}
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input type="email" placeholder="test@test.com" size="lg" name="email" onChange={handleChangeEmail} />

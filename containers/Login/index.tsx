@@ -10,10 +10,10 @@ import {
   Button,
   Text,
   Link as LinkUI,
-  CircularProgress
+  CircularProgress,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import firebase from 'services/firebase'
+import firebase from "services/firebase";
 import ErrorMessage from "components/ui/ErrorMessage";
 
 const Login = () => {
@@ -22,14 +22,13 @@ const Login = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleChangeEmail = useCallback((e) => {
+  const handleChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
 
-  const handleChangePassword = useCallback((e) => {
+  const handleChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   }, []);
-
 
   const handleSubmit = useCallback(
     async (e) => {
@@ -46,7 +45,6 @@ const Login = () => {
     [email, password]
   );
 
-
   return (
     <Container w="xl" width="full" align="center" justifyContent="center">
       <Box p={8} borderWidth={1} borderRadius={8} boxShadow="lg">
@@ -55,7 +53,7 @@ const Login = () => {
         </Box>
         <Box my={4} textAlign="left">
           <form onSubmit={handleSubmit}>
-            {error && <ErrorMessage message={error} align="center"/>}
+            {error && <ErrorMessage message={error} align="center" />}
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
               <Input type="email" placeholder="test@test.com" size="lg" name="email" onChange={handleChangeEmail} />
