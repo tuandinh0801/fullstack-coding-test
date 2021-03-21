@@ -6,17 +6,17 @@ import {
   FormControl,
   FormLabel,
   Input,
-  InputGroup,
   Button,
   Text,
   Link as LinkUI,
   CircularProgress,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import firebase from "services/firebase";
 import ErrorMessage from "components/ui/ErrorMessage";
+import { useAuthenticate } from "hooks/auth/useAuthenticate";
 
 const SignUp = () => {
+  const { signUp } = useAuthenticate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirmPassword] = useState("");
@@ -50,7 +50,7 @@ const SignUp = () => {
       setLoading(true);
 
       try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        await signUp(email, password);
       } catch (err) {
         setError(err.message);
       }

@@ -13,10 +13,11 @@ import {
   CircularProgress,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import firebase from "services/firebase";
 import ErrorMessage from "components/ui/ErrorMessage";
+import { useAuthenticate } from "hooks/auth/useAuthenticate";
 
 const Login = () => {
+  const { login } = useAuthenticate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ const Login = () => {
       setError(null);
       setLoading(true);
       try {
-        await firebase.auth().signInWithEmailAndPassword(email, password);
+        await login(email, password);
       } catch (err) {
         setError(err.message);
       }

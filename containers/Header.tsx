@@ -2,10 +2,9 @@ import React from "react";
 import { Flex, Button } from "@chakra-ui/react";
 import Logo from "components/ui/Logo";
 import { useAuthenticate } from "hooks/auth/useAuthenticate";
-import firebase from 'services/firebase'
 
 const Header = () => {
-  const { user } = useAuthenticate();
+  const { user, logout } = useAuthenticate();
   return (
     <Flex
       as="nav"
@@ -21,7 +20,7 @@ const Header = () => {
         <Logo w="100px" color={["white", "white", "primary.500", "primary.500"]} />
       </Flex>
       {user && (
-        <Button colorScheme="teal" variant="ghost" onClick={() => firebase.auth().signOut()}>
+        <Button colorScheme="teal" variant="ghost" onClick={logout}>
           Logout
         </Button>
       )}
