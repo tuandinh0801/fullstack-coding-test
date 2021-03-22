@@ -10,7 +10,7 @@ const ProtectRoute = ({ children }) => {
 
   const { pathname } = router;
 
-  const checkProtectedRoute = useCallback((url) => ["/", "/blogs"].includes(url), []);
+  const checkProtectedRoute = useCallback((url) => ["/", "/blogs", "/dashboard"].includes(url), []);
   const checkAuthRoute = useCallback((url) => ["/login", "/sign-up"].includes(url), []);
 
   useEffect(() => {

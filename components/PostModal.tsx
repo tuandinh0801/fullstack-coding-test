@@ -46,9 +46,13 @@ const PostModal: React.FC<PostModalProps> = ({ image, title, content, isOpen, on
           </Box>
 
           <Flex p="40px" flexGrow={1} direction="column">
-            <Box my="20px" flex="1" color="gray.700">
-              {content}
-            </Box>
+            <Box
+              my="20px"
+              flex="1"
+              color="gray.700"
+              dangerouslySetInnerHTML={{
+                __html: content,
+              }}></Box>
           </Flex>
         </ModalBody>
 

@@ -19,8 +19,7 @@ const PostItem: React.FC<PostItemProps> = ({ image, title, content, onOpen }) =>
       shadow="md"
       borderRadius={8}
       overflow="hidden"
-      onClick={onOpen}
-      >
+      onClick={onOpen}>
       <Box role="group" height="260px" width="100%" pos="relative">
         <Box
           as={Image}
@@ -41,12 +40,16 @@ const PostItem: React.FC<PostItemProps> = ({ image, title, content, onOpen }) =>
         <Heading fontSize="2xl" as="h4" textTransform="uppercase">
           {title}
         </Heading>
-        <Box my="20px" flex="1" color="gray.700">
-          {`
+        <Box
+          my="20px"
+          flex="1"
+          color="gray.700"
+          dangerouslySetInnerHTML={{
+            __html: `
             ${content.substr(0, 100)}\n
             ...Read more
-            `}
-        </Box>
+            `,
+          }}></Box>
       </Flex>
     </Flex>
   );
