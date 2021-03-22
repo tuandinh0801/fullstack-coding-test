@@ -141,7 +141,7 @@ const BlogModal: React.FC<BlogModalProps> = ({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="teal" type="submit" mr={3}>
+            <Button colorScheme="teal" type="submit" mr={3} disabled={isLoading}>
               {isLoading ? (
                 <CircularProgress isIndeterminate size="24px" color="teal" />
               ) : isCreate ? (

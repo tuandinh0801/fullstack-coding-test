@@ -33,7 +33,7 @@ class Blogs {
 
     const { id, ...rest } = blogData;
 
-    return axiosInstance.patch(`/blogs/${id}`, rest);
+    return axiosInstance.put(`/blogs/${id}`, rest);
   }
 
   async createBlog(blogData: BlogData): Promise<any> {
