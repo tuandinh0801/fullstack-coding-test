@@ -1,8 +1,33 @@
 # Result
 
-- Test 1: https://fullstack-coding-test-theta.vercel.app/
+### Total time: ~15 hours
 
---- 
+- Test 1:
+  - URL: https://fullstack-coding-test-theta.vercel.app/
+  - Code: [https://github.com/tuandinh0801/fullstack-coding-test/tree/test-1](test-1)
+
+- Test 2:
+    - URL: https://fullstack-coding-test-2.vercel.app/
+    - Code: [https://github.com/tuandinh0801/fullstack-coding-test/tree/test-2](test-2)
+
+- Test 3:
+    a. Front-end:
+
+    - Web URL: https://fullstack-coding-test-3.vercel.app/
+    - Code: [https://github.com/tuandinh0801/fullstack-coding-test/tree/test-3](test-2)
+
+    b. Back-end:
+
+    - Git: https://github.com/tuandinh0801/fullstack-coding-test-server
+    - Server url: https://fullstack-coding-test.herokuapp.com/
+    - Swagger: https://fullstack-coding-test.herokuapp.com/api
+    - Admin account: admin@gmail.com/123456
+
+**NOTE:** I tried to deploy to Lambda but it has some issues with CORS, maybe this relates https://github.com/serverless/serverless/issues/6190
+So that, I deployed to Heroku instead
+
+---
+
 # Coding Tests
 
 - Fullstack Developer - Do Test 1, 2 and 3
